@@ -16,10 +16,20 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from .views import AutoAPIView
+from .views import *
 
 urlpatterns = [
     
-    path('api/v1/autolist',AutoAPIView.as_view())
+    path('countries/', CountryListView.as_view(), name='country-list'),
+    path('countries/<int:pk>/', CountryDetailView.as_view(), name='country-detail'),
+    
+    path('producers/', ProducerListView.as_view(), name='producer-list'),
+    path('producers/<int:pk>/', ProducerDetailView.as_view(), name='producer-detail'),
+    
+    path('autolist', AutoAPIList.as_view()),
+    path('autolist/<int:pk>/', AutoAPIUpdate.as_view()),
+    
+    path('messages/', MessageListView.as_view(), name='message-list'),
+    path('messages/<int:pk>/', MessageDetailView.as_view(), name='message-detail')
 
 ]
