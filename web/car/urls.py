@@ -15,10 +15,16 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include, re_path
 from .views import *
 
+
 urlpatterns = [
+    # path('drf-auth', include('rest_framework.urls')),
+    
+    path('auth/', include('djoser.urls')),
+    # re_path(r'^auth/', include('djoser.urls.authtoken')),
+    path('auth/', include('djoser.urls.authtoken')),
     
     path('countries/', CountryListView.as_view(), name='country-list'),
     path('countries/<int:pk>/', CountryDetailView.as_view(), name='country-detail'),
@@ -26,8 +32,8 @@ urlpatterns = [
     path('producers/', ProducerListView.as_view(), name='producer-list'),
     path('producers/<int:pk>/', ProducerDetailView.as_view(), name='producer-detail'),
     
-    path('autolist', AutoAPIList.as_view()),
-    path('autolist/<int:pk>/', AutoAPIUpdate.as_view()),
+    path('autolist', AutoListView.as_view(), name='auto-list'),
+    path('autolist/<int:pk>/', AutoDetailView.as_view(), name='auto-detail'),
     
     path('messages/', MessageListView.as_view(), name='message-list'),
     path('messages/<int:pk>/', MessageDetailView.as_view(), name='message-detail')

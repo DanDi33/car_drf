@@ -1,37 +1,47 @@
 from django.shortcuts import render
 from rest_framework import generics
+from rest_framework.permissions import IsAuthenticatedOrReadOnly, IsAuthenticated
+from rest_framework.authentication import TokenAuthentication
 from .models import Country, Producer, Auto, Message
 from .serializers import CountrySerializer, ProducerSerializer, AutoSerializer, MessageSerializer
 from rest_framework.views import APIView
 from rest_framework.response import Response
+from .permissions import IsOwnerOrReadOnly, IsAdminOrReadOnly
 
 # Create your views here.
 
 class CountryListView(generics.ListCreateAPIView):
     queryset = Country.objects.all()
     serializer_class = CountrySerializer
+    permission_classes = (IsAuthenticatedOrReadOnly,)
+    # authentication_classes = (TokenAuthentication,)
 
 class CountryDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Country.objects.all()
     serializer_class = CountrySerializer
+    permission_classes = (IsAuthenticatedOrReadOnly,) 
     
     
 class ProducerListView(generics.ListCreateAPIView):
     queryset = Producer.objects.all()
     serializer_class = ProducerSerializer
+    permission_classes = (IsAuthenticatedOrReadOnly,)
 
 class ProducerDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Producer.objects.all()
     serializer_class = ProducerSerializer
+    permission_classes = (IsAuthenticatedOrReadOnly,)
 
 
-class AutoAPIList(generics.ListCreateAPIView):
+class AutoListView(generics.ListCreateAPIView):
     queryset = Auto.objects.all()
     serializer_class = AutoSerializer
+    permission_classes = (IsAuthenticatedOrReadOnly,)
     
-class AutoAPIUpdate(generics.UpdateAPIView):
+class AutoDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Auto.objects.all()
     serializer_class = AutoSerializer
+    permission_classes = (IsAuthenticatedOrReadOnly,)
     
     
 class MessageListView(generics.ListCreateAPIView):
@@ -41,6 +51,7 @@ class MessageListView(generics.ListCreateAPIView):
 class MessageDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Message.objects.all()
     serializer_class = MessageSerializer
+    permission_classes = (IsOwnerOrReadOnly,)
 
 
 # class AutoAPIView(generics.ListAPIView):

@@ -5,6 +5,7 @@ from rest_framework import generics
 
 
 class MessageSerializer(serializers.ModelSerializer):
+    user = serializers.HiddenField(default=serializers.CurrentUserDefault())
     class Meta:
         model = Message
         fields = '__all__'
