@@ -1,0 +1,85 @@
+{% load sass_tags %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{% sass_src 'css/front/main.scss' %}" rel="stylesheet" type="text/css" />
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="menu__wrap">
+        <img class="logo__img" src="{% static 'logo.png' %}" alt="logo">
+        <input type="checkbox" name="" id="menu__checkbox">
+        <nav class="navbar">
+            <ul>
+                <li><a href="#" class="js__open__modal" data-modal="1">Добавить страну</a></li>
+                <li><a href="#" id="countries">Страны</a></li>
+                <li><a href="#" id="producers">Производители</a></li>
+                <li><a href="#food-menu">Menu</a></li>
+                <li><a href="#testimonials">Testimonial</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+        <label for="menu__checkbox">
+            <svg class="menu__icon" enable-background="new 0 0 32 32" viewBox="0 0 32 32"
+                xmlns="http://www.w3.org/2000/svg">
+                <g id="Layer_1">
+                    <path d="m29 8h-26c-1.1045 0-2-.8955-2-2s.8955-2 2-2h26c1.1045 0 2 .8955 2 2s-.8955 2-2 2z" />
+                    <path d="m29 28h-26c-1.1045 0-2-.8955-2-2s.8955-2 2-2h26c1.1045 0 2 .8955 2 2s-.8955 2-2 2z" />
+                    <path d="m29 18h-26c-1.1045 0-2-.8955-2-2s.8955-2 2-2h26c1.1045 0 2 .8955 2 2s-.8955 2-2 2z" />
+                </g>
+            </svg>
+        </label>
+    </div>
+
+    <!-- <form id="loginForm">
+        <input type="text" id="username" placeholder="Имя пользователя">
+        <input type="password" id="password" placeholder="Пароль">
+        <input type="submit" value="Войти">
+    </form> -->
+    <div class="content"></div>
+    <div class="footer">
+        <p>Developed and produced by Danilov D.</p>
+    </div>
+
+    <div class="modal" data-modal="1">
+        <form id="countryForm" autocomplete="off">
+            <div class="modal__header">
+                <div class="title-1">
+                    Добавить страну
+                </div>
+                <svg class="close__modal js__close__modal" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path
+                        d="M23.954 21.03l-9.184-9.095 9.092-9.174-2.832-2.807-9.09 9.179-9.176-9.088-2.81 2.81 9.186 9.105-9.095 9.184 2.81 2.81 9.112-9.192 9.18 9.1z" />
+                </svg>
+            </div>
+            <div class="modal__content">
+                <input type="text" class="modal__input" id="countryName" placeholder="Страна производства" required>
+            </div>
+            <div class="modal__footer">
+                <div class="buttons-row">
+                    <input class="button button--primary" type="submit" value="Войти">
+                    <button class="button js__close__modal">Cancel</button>
+                </div>
+
+            </div>
+        </form>
+    </div>
+    <!-- Подложка под модальным окном -->
+    <div class="overlay" id="overlay__modal"></div>
+
+    <script src="{% static 'js/front/mymenu.js'%}"></script>
+    <script src="{% static 'js/front/modal.js'%}"></script>
+    <script src="{% static 'js/front/requests.js'%}"></script>
+</body>
+
+</html>

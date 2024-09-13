@@ -1,0 +1,14 @@
+.title-1 {
+    font-size: 26px;
+    font-weight: 500;
+}
+
+//отступ сверху у последующего элемента после title
+.title-1 + * {
+    margin-top: 15px;
+}
+
+
+.title-center{
+    text-align: center;
+}

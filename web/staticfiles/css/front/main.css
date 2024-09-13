@@ -1,0 +1,237 @@
+@charset "UTF-8";
+* {
+  box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif; }
+
+h1, h2, h3, h4, h5, h6, p {
+  margin: 0; }
+
+.modal {
+  /* Скрываем окна  */
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  top: 50px;
+  bottom: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 660px;
+  z-index: 30;
+  background: #FFFFFF;
+  box-shadow: 0px 4px 15px 0px #00000026; }
+  .modal form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%; }
+  @media (max-width: 680px) {
+    .modal {
+      top: 10px;
+      bottom: 10px;
+      left: 10px;
+      right: 10px;
+      transform: none;
+      width: auto; } }
+.modal__header,
+.modal__footer {
+  height: 90px;
+  padding: 10px 40px;
+  box-shadow: 0px 4px 15px 0px #00000026;
+  display: flex;
+  align-items: center; }
+
+.modal__content {
+  overflow-y: auto;
+  padding: 40px;
+  font-size: 16px;
+  line-height: 1.5; }
+
+.modal__content p + p {
+  margin-top: 1em; }
+
+.overlay {
+  /* Скрываем подложку  */
+  opacity: 0;
+  visibility: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 20;
+  transition: .3s all; }
+
+.modal.active,
+.overlay.active {
+  opacity: 1;
+  visibility: visible; }
+
+.close__modal {
+  width: 15px;
+  height: 15px;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  fill: #444;
+  cursor: pointer; }
+
+.title-1 {
+  font-size: 26px;
+  font-weight: 500; }
+
+.title-1 + * {
+  margin-top: 15px; }
+
+.title-center {
+  text-align: center; }
+
+.button {
+  padding: 10px 10px;
+  font-size: 18px;
+  border-radius: 4px;
+  border: 1px solid #C1C1C1;
+  background-color: white;
+  cursor: pointer;
+  transition: color 0.2s ease-in, background-color 0.2a ease-in, border-color 0.2a ease-in; }
+  .button:hover {
+    background-color: #e6e6e6; }
+
+@media (min-width: 768px) {
+  .button {
+    padding: 10px 40px; } }
+
+.button--primary {
+  color: white;
+  background-color: #4486fb;
+  border-color: transparent; }
+  .button--primary:hover {
+    background-color: #44a3fb; }
+
+.buttons-row {
+  display: flex; }
+
+.buttons-row > .button + .button {
+  margin-left: 20px; }
+
+.buttons-right {
+  justify-content: end; }
+
+.modal__input {
+  width: 100%;
+  padding: 10px;
+  font-size: 18px;
+  border-radius: 4px;
+  border: 1px solid #C1C1C1; }
+  .modal__input:focus {
+    background-color: #e6e6e6;
+    border: 1px solid #04b2e7; }
+
+.menu__wrap {
+  height: 70px;
+  background-color: #22292f;
+  padding: 10px 15px;
+  display: flex;
+  justify-content: space-between; }
+
+.logo__img {
+  height: 50px; }
+
+.menu__icon {
+  width: 50px;
+  font-size: 2.4em;
+  fill: #ffffff;
+  line-height: 50px; }
+
+@media (min-width: 768px) {
+  .menu__icon {
+    display: none; } }
+
+.navbar {
+  position: absolute;
+  background-color: #3d4852;
+  top: 70px;
+  left: 0;
+  width: 100%; }
+
+.navbar ul {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+  max-height: 0;
+  overflow: hidden; }
+
+.navbar ul li {
+  padding: 0 15px; }
+
+@media (min-width: 768px) {
+  .navbar {
+    position: relative;
+    top: -10px;
+    background-color: transparent; }
+  .navbar ul {
+    max-height: 70px;
+    padding: 15px 0;
+    text-align: right; }
+  .navbar ul li {
+    display: inline-flex; } }
+
+.navbar ul li a {
+  display: inline-block;
+  padding: 12px;
+  color: #dae1e7;
+  text-decoration: none;
+  letter-spacing: 0.05em; }
+
+.navbar ul li a:hover,
+.navbar ul li a:focus {
+  color: #eb6f4a; }
+
+#menu__checkbox {
+  display: none; }
+
+#menu__checkbox:checked ~ .navbar ul {
+  max-height: 600px;
+  padding: 15px 0;
+  transition: all 0.5s; }
+
+.content {
+  min-height: calc(100vh - 2*70px); }
+
+.container {
+  max-width: 100%;
+  padding: 40px;
+  background-color: lightgrey;
+  border-radius: 0;
+  font-size: 16px; }
+
+@media (min-width: 768px) {
+  .content {
+    min-height: calc(100vh - 2*70px - 10px); }
+  .container {
+    margin: 10px auto;
+    max-width: 800px;
+    border-radius: 10px; } }
+
+.content__body + * {
+  margin-top: 15px; }
+
+.content__body p + p {
+  margin-top: 1em; }
+
+.footer {
+  height: 70px;
+  width: 100%;
+  background-color: #22292f;
+  padding: 10px 15px;
+  color: #dae1e7; }
+
+.footer p {
+  max-height: 70px;
+  padding: 15px 0;
+  text-align: center; }
+
+/*# sourceMappingURL=main.css.map */

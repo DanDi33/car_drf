@@ -1,0 +1,91 @@
+.menu__wrap {
+    height: 70px;
+    background-color: #22292f;
+    padding: 10px 15px;
+
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.logo__img {
+    height: 50px;
+}
+
+.menu__icon {
+    width: 50px;
+    font-size: 2.4em;
+    fill: #ffffff;
+    line-height: 50px;
+}
+
+@media(min-width:768px) {
+    .menu__icon{
+        display: none;
+    }
+    
+}
+
+.navbar {
+    position: absolute;
+    background-color: #3d4852;
+    top: 70px;
+    left: 0;
+    width: 100%;
+
+
+}
+
+.navbar ul {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    max-height: 0;
+    overflow: hidden;
+
+}
+
+.navbar ul li {
+    padding: 0 15px;
+}
+
+@media (min-width:768px) {
+    .navbar {
+        position: relative;
+        top: -10px;
+        background-color: transparent;
+    }
+    .navbar ul{
+        max-height: 70px;
+        padding: 15px 0;
+        text-align: right;
+    }
+    .navbar ul li{
+        display: inline-flex;
+    }
+}
+
+.navbar ul li a {
+    display: inline-block;
+    padding: 12px;
+    color: #dae1e7;
+    text-decoration: none;
+    letter-spacing: 0.05em;
+}
+
+.navbar ul li a:hover,
+.navbar ul li a:focus {
+    color: #eb6f4a;
+}
+
+#menu__checkbox{
+    display: none;
+}
+
+#menu__checkbox:checked ~ .navbar ul{
+    max-height: 600px;
+    padding: 15px 0;
+    transition: all 0.5s;
+
+}
+

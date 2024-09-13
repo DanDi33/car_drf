@@ -1,0 +1,11 @@
+.buttons-row {
+    display: flex;
+}
+
+.buttons-row > .button + .button {
+    margin-left: 20px;
+}
+
+.buttons-right{
+    justify-content: end;
+}
